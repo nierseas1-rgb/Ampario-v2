@@ -1,6 +1,7 @@
 "use client";
 
 import { useFavorites } from "@/context/FavoritesContext";
+import { useToast } from "@/context/ToastContext";
 import { HeartIcon } from "./icons";
 
 export function FavoriteButton({
@@ -13,6 +14,7 @@ export function FavoriteButton({
   size?: number;
 }) {
   const { isFavorite, toggleFavorite } = useFavorites();
+  const { notify } = useToast();
   const active = isFavorite(id);
 
   return (
@@ -22,6 +24,10 @@ export function FavoriteButton({
         e.preventDefault();
         e.stopPropagation();
         toggleFavorite(id);
+        notify(
+          active ? "Retiré de vos favoris" : "Ajouté à vos favoris",
+          "favorite"
+        );
       }}
       aria-label={active ? "Retirer des favoris" : "Ajouter aux favoris"}
       aria-pressed={active}

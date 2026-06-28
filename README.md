@@ -20,6 +20,12 @@ Construit avec **Next.js 16 (App Router)**, **TypeScript** et **Tailwind CSS**.
 - **Vendre** (`/vendre`) & **Estimation** (`/estimation`) : assistant
   d'estimation interactif en plusieurs étapes.
 - **Simulateur de prêt** (`/simulateur`) : calcul de mensualité en temps réel.
+- **Vue carte interactive** : bascule grille/carte sur les annonces, épingles
+  de prix géolocalisées et fiche au survol.
+- **Comparateur de biens** (`/comparateur`) : jusqu'à 3 biens confrontés
+  caractéristique par caractéristique, avec barre flottante.
+- **Gestion locative** (`/gestion-locative`), **Actualités / blog**
+  (`/actualites`), **Avis clients** (`/avis`), **FAQ** (`/faq`).
 - **Agences** (`/agences`), **Contact** (`/contact`), **Infoline**
   (`/infoline`), **Mentions légales** (`/mentions-legales`).
 
@@ -34,6 +40,10 @@ Construit avec **Next.js 16 (App Router)**, **TypeScript** et **Tailwind CSS**.
 ### Détails d'expérience
 - Barre **Infoline** (téléphone, email, horaires, sélecteur de langue).
 - En-tête collant avec navigation, menu mobile et menu compte.
+- **Notifications toast**, **bandeau cookies** (RGPD), **bouton retour en haut**.
+- **Biens consultés récemment**, **partage social** (Facebook, X, LinkedIn,
+  copie de lien).
+- **SEO** : sitemap, robots, manifest PWA, favicon, Open Graph.
 - Newsletter, design responsive, animations douces, identité de marque
   (bleu marine / or / crème) reprise du logo « AP ».
 

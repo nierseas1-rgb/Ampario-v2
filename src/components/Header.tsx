@@ -22,7 +22,8 @@ const navLinks = [
   { href: "/proprietes?transaction=vente", label: "Acheter" },
   { href: "/proprietes?transaction=location", label: "Louer" },
   { href: "/vendre", label: "Vendre" },
-  { href: "/estimation", label: "Estimation" },
+  { href: "/gestion-locative", label: "Gestion" },
+  { href: "/actualites", label: "Actualités" },
   { href: "/agences", label: "Agences" },
   { href: "/contact", label: "Contact" },
 ];

@@ -10,7 +10,8 @@ import {
   defaultFilters,
 } from "./PropertyFilters";
 import { PropertyCategory, TransactionType } from "@/data/types";
-import { FilterIcon, CloseIcon, SearchIcon } from "./icons";
+import { FilterIcon, CloseIcon, SearchIcon, MapPinIcon, RoomsIcon } from "./icons";
+import { PropertyMap } from "./PropertyMap";
 
 type SortKey = "recent" | "price-asc" | "price-desc" | "surface-desc";
 
@@ -26,6 +27,7 @@ export function PropertyListing() {
   const [filters, setFilters] = useState<Filters>(defaultFilters);
   const [sort, setSort] = useState<SortKey>("recent");
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
+  const [view, setView] = useState<"grille" | "carte">("grille");
 
   // Initialise les filtres depuis l'URL
   useEffect(() => {
@@ -134,6 +136,31 @@ export function PropertyListing() {
                 <FilterIcon width={16} height={16} />
                 Filtres
               </button>
+              {/* Bascule grille / carte */}
+              <div className="flex items-center gap-1 rounded-xl bg-cream-200/70 p-1">
+                <button
+                  onClick={() => setView("grille")}
+                  className={`flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm font-medium transition ${
+                    view === "grille"
+                      ? "bg-navy-900 text-cream-100 shadow"
+                      : "text-navy-600 hover:bg-white"
+                  }`}
+                >
+                  <RoomsIcon width={15} height={15} />
+                  <span className="hidden sm:inline">Grille</span>
+                </button>
+                <button
+                  onClick={() => setView("carte")}
+                  className={`flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm font-medium transition ${
+                    view === "carte"
+                      ? "bg-navy-900 text-cream-100 shadow"
+                      : "text-navy-600 hover:bg-white"
+                  }`}
+                >
+                  <MapPinIcon width={15} height={15} />
+                  <span className="hidden sm:inline">Carte</span>
+                </button>
+              </div>
               <div className="flex items-center gap-2">
                 <span className="hidden text-sm text-navy-400 sm:inline">
                   Trier par
@@ -155,11 +182,17 @@ export function PropertyListing() {
 
           {/* Résultats */}
           {results.length > 0 ? (
-            <div className="mt-8 grid gap-7 sm:grid-cols-2 xl:grid-cols-3">
-              {results.map((p) => (
-                <PropertyCard key={p.id} property={p} />
-              ))}
-            </div>
+            view === "carte" ? (
+              <div className="mt-8">
+                <PropertyMap items={results} />
+              </div>
+            ) : (
+              <div className="mt-8 grid gap-7 sm:grid-cols-2 xl:grid-cols-3">
+                {results.map((p) => (
+                  <PropertyCard key={p.id} property={p} />
+                ))}
+              </div>
+            )
           ) : (
             <div className="mt-10 flex flex-col items-center justify-center rounded-2xl border border-dashed border-navy-200 bg-white py-20 text-center">
               <span className="flex h-16 w-16 items-center justify-center rounded-full bg-cream-200 text-navy-400">

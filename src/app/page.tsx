@@ -3,6 +3,8 @@ import Image from "next/image";
 import { SearchBar } from "@/components/SearchBar";
 import { PropertyCard } from "@/components/PropertyCard";
 import { SectionHeading } from "@/components/SectionHeading";
+import { TestimonialsSection } from "@/components/TestimonialsSection";
+import { RecentlyViewed } from "@/components/RecentlyViewed";
 import { properties } from "@/data/properties";
 import {
   ArrowRightIcon,
@@ -258,6 +260,12 @@ export default function HomePage() {
           ))}
         </div>
       </section>
+
+      {/* AVIS CLIENTS */}
+      <TestimonialsSection />
+
+      {/* BIENS CONSULTÉS RÉCEMMENT */}
+      <RecentlyViewed />
 
       {/* VENTES RÉCENTES */}
       <section className="container-page py-20">

@@ -20,6 +20,9 @@ import { ContactAgentForm } from "@/components/ContactAgentForm";
 import { MiniMap } from "@/components/MiniMap";
 import { PropertyCard } from "@/components/PropertyCard";
 import { DpeBadge } from "@/components/DpeBadge";
+import { ShareButtons } from "@/components/ShareButtons";
+import { TrackView } from "@/components/TrackView";
+import { RecentlyViewed } from "@/components/RecentlyViewed";
 import {
   BedIcon,
   BathIcon,
@@ -97,6 +100,7 @@ export default async function PropertyDetailPage({
 
   return (
     <div className="pb-24">
+      <TrackView id={property.id} />
       {/* Fil d'Ariane */}
       <div className="border-b border-navy-50 bg-cream-50">
         <div className="container-page flex items-center gap-2 py-4 text-sm text-navy-400">
@@ -278,6 +282,11 @@ export default async function PropertyDetailPage({
                 <LoanSimulator price={property.price} />
               </section>
             )}
+
+            {/* Partage */}
+            <section className="border-t border-navy-100 pt-8">
+              <ShareButtons title={`${property.title} — ${property.city}`} />
+            </section>
           </div>
 
           {/* Colonne latérale */}
@@ -302,6 +311,9 @@ export default async function PropertyDetailPage({
           </section>
         )}
       </div>
+
+      {/* Biens consultés récemment */}
+      <RecentlyViewed excludeId={property.id} />
     </div>
   );
 }

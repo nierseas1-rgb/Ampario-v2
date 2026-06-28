@@ -17,21 +17,21 @@ const columns = [
   {
     title: "Services",
     links: [
+      { href: "/gestion-locative", label: "Gestion locative" },
       { href: "/simulateur", label: "Simulateur de prêt" },
+      { href: "/comparateur", label: "Comparateur de biens" },
       { href: "/infoline", label: "Infoline conseil" },
-      { href: "/agences", label: "Nos agences" },
-      { href: "/compte", label: "Mon espace" },
       { href: "/favoris", label: "Mes favoris" },
     ],
   },
   {
     title: "Informations",
     links: [
+      { href: "/actualites", label: "Actualités" },
+      { href: "/avis", label: "Avis clients" },
+      { href: "/faq", label: "FAQ" },
       { href: "/contact", label: "Contact" },
       { href: "/mentions-legales", label: "Mentions légales" },
-      { href: "/mentions-legales#cgv", label: "CGV" },
-      { href: "/mentions-legales#confidentialite", label: "Confidentialité" },
-      { href: "/mentions-legales#honoraires", label: "Honoraires" },
     ],
   },
 ];

@@ -7,6 +7,7 @@ import {
   formatSurface,
 } from "@/lib/format";
 import { FavoriteButton } from "./FavoriteButton";
+import { CompareButton } from "./CompareButton";
 import { BedIcon, RulerIcon, MapPinIcon, RoomsIcon } from "./icons";
 import { DpeBadge } from "./DpeBadge";
 
@@ -48,7 +49,10 @@ export function PropertyCard({ property }: { property: Property }) {
               </span>
             )}
           </div>
-          <FavoriteButton id={property.id} className="h-10 w-10" />
+          <div className="flex flex-col gap-2">
+            <FavoriteButton id={property.id} className="h-10 w-10" />
+            <CompareButton id={property.id} className="h-10 w-10" />
+          </div>
         </div>
         {property.isSold && (
           <div className="absolute inset-0 flex items-center justify-center bg-navy-950/55">

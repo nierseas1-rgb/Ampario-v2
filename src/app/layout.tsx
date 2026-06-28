@@ -3,8 +3,14 @@ import { Cormorant_Garamond, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/context/AuthContext";
 import { FavoritesProvider } from "@/context/FavoritesContext";
+import { ToastProvider } from "@/context/ToastContext";
+import { CompareProvider } from "@/context/CompareContext";
+import { RecentProvider } from "@/context/RecentContext";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { CompareBar } from "@/components/CompareBar";
+import { ScrollToTop } from "@/components/ScrollToTop";
+import { CookieConsent } from "@/components/CookieConsent";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -21,6 +27,7 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.ampario.fr"),
   title: {
     default: "Ampario — Immobilier de prestige",
     template: "%s | Ampario",
@@ -57,13 +64,22 @@ export default function RootLayout({
   return (
     <html lang="fr" className={`${cormorant.variable} ${jakarta.variable}`}>
       <body className="flex min-h-screen flex-col font-sans">
-        <AuthProvider>
-          <FavoritesProvider>
-            <Header />
-            <main className="flex-1">{children}</main>
-            <Footer />
-          </FavoritesProvider>
-        </AuthProvider>
+        <ToastProvider>
+          <AuthProvider>
+            <FavoritesProvider>
+              <CompareProvider>
+                <RecentProvider>
+                  <Header />
+                  <main className="flex-1">{children}</main>
+                  <Footer />
+                  <CompareBar />
+                  <ScrollToTop />
+                  <CookieConsent />
+                </RecentProvider>
+              </CompareProvider>
+            </FavoritesProvider>
+          </AuthProvider>
+        </ToastProvider>
       </body>
     </html>
   );
